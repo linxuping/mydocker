@@ -1,0 +1,139 @@
+lxp@ubuntu:~/django/django$ ./build.sh 
+Sending build context to Docker daemon 1.649 MB
+Sending build context to Docker daemon 
+Step 0 : FROM ubuntu
+ ---> 901e234dbcd5
+Step 1 : MAINTAINER Kavin
+ ---> Using cache
+ ---> aeccf86ea6ea
+Step 2 : RUN apt-get install -y python
+ ---> Running in bd692824d3de
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python-minimal
+  python2.7 python2.7-minimal
+Suggested packages:
+  python-doc python-tk python2.7-doc binutils binfmt-support
+The following NEW packages will be installed:
+  libpython-stdlib libpython2.7-minimal libpython2.7-stdlib python
+  python-minimal python2.7 python2.7-minimal
+0 upgraded, 7 newly installed, 0 to remove and 0 not upgraded.
+Need to get 3734 kB of archives.
+After this operation, 16.0 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty/main libpython2.7-minimal amd64 2.7.6-8 [307 kB]
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty/main python2.7-minimal amd64 2.7.6-8 [1190 kB]
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty/main libpython2.7-stdlib amd64 2.7.6-8 [1872 kB]
+Get:4 http://archive.ubuntu.com/ubuntu/ trusty/main libpython-stdlib amd64 2.7.5-5ubuntu3 [7012 B]
+Get:5 http://archive.ubuntu.com/ubuntu/ trusty/main python2.7 amd64 2.7.6-8 [197 kB]
+Get:6 http://archive.ubuntu.com/ubuntu/ trusty/main python-minimal amd64 2.7.5-5ubuntu3 [27.5 kB]
+Get:7 http://archive.ubuntu.com/ubuntu/ trusty/main python amd64 2.7.5-5ubuntu3 [134 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+Fetched 3734 kB in 1min 39s (37.5 kB/s)
+Selecting previously unselected package libpython2.7-minimal:amd64.
+(Reading database ... 11552 files and directories currently installed.)
+Preparing to unpack .../libpython2.7-minimal_2.7.6-8_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.6-8) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../python2.7-minimal_2.7.6-8_amd64.deb ...
+Unpacking python2.7-minimal (2.7.6-8) ...
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack .../libpython2.7-stdlib_2.7.6-8_amd64.deb ...
+Unpacking libpython2.7-stdlib:amd64 (2.7.6-8) ...
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack .../libpython-stdlib_2.7.5-5ubuntu3_amd64.deb ...
+Unpacking libpython-stdlib:amd64 (2.7.5-5ubuntu3) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../python2.7_2.7.6-8_amd64.deb ...
+Unpacking python2.7 (2.7.6-8) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../python-minimal_2.7.5-5ubuntu3_amd64.deb ...
+Unpacking python-minimal (2.7.5-5ubuntu3) ...
+Selecting previously unselected package python.
+Preparing to unpack .../python_2.7.5-5ubuntu3_amd64.deb ...
+Unpacking python (2.7.5-5ubuntu3) ...
+Processing triggers for mime-support (3.54ubuntu1.1) ...
+Setting up libpython2.7-minimal:amd64 (2.7.6-8) ...
+Setting up python2.7-minimal (2.7.6-8) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up libpython2.7-stdlib:amd64 (2.7.6-8) ...
+Setting up libpython-stdlib:amd64 (2.7.5-5ubuntu3) ...
+Setting up python2.7 (2.7.6-8) ...
+Setting up python-minimal (2.7.5-5ubuntu3) ...
+Setting up python (2.7.5-5ubuntu3) ...
+ ---> f92b6e68902b
+Removing intermediate container bd692824d3de
+Step 3 : ADD pip.py /opt/pip.py
+ ---> fb41a261df14
+Removing intermediate container 8d660ce5bae1
+Step 4 : WORKDIR /opt
+ ---> Running in 5b6227af972e
+ ---> c6f89b334b5a
+Removing intermediate container 5b6227af972e
+Step 5 : RUN python pip.py
+ ---> Running in 8a758576ecd7
+Downloading/unpacking pip
+Downloading/unpacking setuptools
+Installing collected packages: pip, setuptools
+Successfully installed pip setuptools
+Cleaning up...
+ ---> e2190bc4b5ce
+Removing intermediate container 8a758576ecd7
+Step 6 : RUN pip install setuptools
+ ---> Running in bd4088ab8225
+Requirement already satisfied (use --upgrade to upgrade): setuptools in /usr/local/lib/python2.7/dist-packages
+/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:315: SNIMissingWarning: An HTTPS request has been made, but the SNI (Subject Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#snimissingwarning.
+  SNIMissingWarning
+/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:120: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning.
+  InsecurePlatformWarning
+ ---> 02ab137ef0c4
+Removing intermediate container bd4088ab8225
+Step 7 : RUN pip install django
+ ---> Running in 000a83ef5bc6
+Collecting django
+/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:315: SNIMissingWarning: An HTTPS request has been made, but the SNI (Subject Name Indication) extension to TLS is not available on this platform. This may cause the server to present an incorrect TLS certificate, which can cause validation failures. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#snimissingwarning.
+  SNIMissingWarning
+/usr/local/lib/python2.7/dist-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py:120: InsecurePlatformWarning: A true SSLContext object is not available. This prevents urllib3 from configuring SSL appropriately and may cause certain SSL connections to fail. For more information, see https://urllib3.readthedocs.org/en/latest/security.html#insecureplatformwarning.
+  InsecurePlatformWarning
+  Downloading Django-1.9.5-py2.py3-none-any.whl (6.6MB)
+Installing collected packages: django
+Successfully installed django-1.9.5
+ ---> ff82686d1cd4
+Removing intermediate container 000a83ef5bc6
+Step 8 : RUN django-admin.py startproject mysite
+ ---> Running in e4528f857a2f
+ ---> 39c0528b1a32
+Removing intermediate container e4528f857a2f
+Step 9 : ADD run.sh /opt/mysite/run.sh
+ ---> af02081cefcb
+Removing intermediate container e383b8bbbf75
+Step 10 : WORKDIR /opt/mysite
+ ---> Running in 6c60faca51d1
+ ---> 5d01cde6f9ea
+Removing intermediate container 6c60faca51d1
+Step 11 : RUN chmod 777 run.sh
+ ---> Running in a30a4ae483af
+ ---> 070763e3489d
+Removing intermediate container a30a4ae483af
+Step 12 : EXPOSE 8080
+ ---> Running in 33e9a899f534
+ ---> 0ce47c281a32
+Removing intermediate container 33e9a899f534
+Step 13 : CMD /bin/sh run.sh
+ ---> Running in de6853225eaa
+ ---> 197e0335cdbc
+Removing intermediate container de6853225eaa
+Successfully built 197e0335cdbc
+
+lxp@ubuntu:~/django/django$docker run -d -p 8080:8080 ubuntu:django
+
+now visit.
+
+
