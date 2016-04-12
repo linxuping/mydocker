@@ -20,5 +20,6 @@ RUN apt-get install -y python;apt-get install -y python-pip;pip install pika
 
 ADD script/build.sh /build.sh
 RUN ["/bin/bash", "/build.sh"]
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && ntpdate cn.pool.ntp.org
 
 CMD ["/bin/bash"]
