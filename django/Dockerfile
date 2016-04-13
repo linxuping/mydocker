@@ -9,12 +9,15 @@ ENV LC_ALL en_US.UTF-8
 
 #RUN apt-get update
 RUN echo deb http://archive.ubuntu.com/ubuntu precise universe multiverse >> /etc/apt/sources.list; apt-get update; apt-get -y install autoconf automake build-essential git mercurial cmake libtool pkg-config wget python 
+RUN apt-get install -y python-dev libxml2-dev libxslt1-dev zlib1g-dev python-yaml #django env. 
 
 ADD pip.py /opt/pip.py
 WORKDIR /opt
 RUN python pip.py
 RUN pip install setuptools
 RUN pip install django==1.9.5
+RUN pip install jieba
+RUN easy_install lxml
 #RUN django-admin.py startproject mysite
 #ADD run.sh /opt/mysite/run.sh
 #WORKDIR /opt/mysite
