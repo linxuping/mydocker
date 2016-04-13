@@ -1,1 +1,3 @@
-python manage.py runserver 0.0.0.0:8080
+_path=`pwd`/django_composite
+docker run -it -v $_path:/mnt ubuntu:django /bin/bash
+

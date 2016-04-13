@@ -28,7 +28,8 @@ RUN ["/bin/bash", "/build.sh"]
 #CMD ["/bin/sh","run.sh"]
 CMD ["/bin/bash"]
 
-VOLUME /mnt
+#VOLUME /mnt
+WORKDIR /mnt
 RUN apt-get clean
 
 
